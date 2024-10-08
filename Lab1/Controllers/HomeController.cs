@@ -34,12 +34,13 @@ public class HomeController : Controller
         {
             operation = Operator.Unknown;
         }
-        
-        if (a == null || b == null)
+
+        // Obsługa błędów dla braku parametrów a lub b (w zależności od operatora)
+        if (operation != Operator.Sin && (a == null || b == null))
         {
             ViewBag.Message = "Brak wartości dla a lub b!";
             ViewBag.Result = "N/A";
-            ViewBag.Op = GetOperatorSymbol(operation);
+            ViewBag.Op = GetOperatorSymbol(operation); 
             return View();
         }
 
@@ -68,6 +69,20 @@ public class HomeController : Controller
                     return View();
                 }
                 break;
+            case Operator.Pow:
+                result = Math.Pow(a.Value, b.Value);
+                break;
+            case Operator.Sin:
+                if (a == null)
+                {
+                    ViewBag.Message = "Brak wartości dla a!";
+                    ViewBag.Result = "N/A";
+                }
+                else
+                {
+                    result = Math.Sin(a.Value);
+                }
+                break;
             default:
                 ViewBag.Message = "Nieznany operator!";
                 ViewBag.Result = "N/A";
@@ -75,7 +90,7 @@ public class HomeController : Controller
         }
 
         ViewBag.A = a;
-        ViewBag.B = b;
+        ViewBag.B = operation == Operator.Sin ? null : b;
         ViewBag.Result = result;
         ViewBag.Op = GetOperatorSymbol(operation);
         return View();
@@ -83,9 +98,10 @@ public class HomeController : Controller
 
 
 
+
     public enum Operator
     {
-        Unknown, Add, Mul, Sub, Div
+        Unknown, Add, Mul, Sub, Div, Pow, Sin
     }
     public string GetOperatorSymbol(Operator op)
     {
@@ -95,9 +111,12 @@ public class HomeController : Controller
             Operator.Sub => "-",
             Operator.Mul => "*",
             Operator.Div => "/",
+            Operator.Pow => "^", 
+            Operator.Sin => "sin",
             _ => "?"
         };
     }
+
 
 
 

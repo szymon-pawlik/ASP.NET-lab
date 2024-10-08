@@ -10,5 +10,12 @@
 }
 else
 {
-    <p>Wynik działania dla: @ViewBag.A @ViewBag.Op @ViewBag.B = @ViewBag.Result</p>
+    @if (ViewBag.Op == "sin")
+    {
+        <p>Wynik działania dla @ViewBag.Op @ViewBag.A = @ViewBag.Result</p>
+    }
+    else
+    {
+        <p>Wynik działania dla @ViewBag.A @ViewBag.Op @ViewBag.B = @ViewBag.Result</p>
+    }
 }
