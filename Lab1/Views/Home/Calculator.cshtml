@@ -1,0 +1,14 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <p>Wynik działania dla: @ViewBag.A @ViewBag.Op @ViewBag.B = @ViewBag.Result</p>
+}

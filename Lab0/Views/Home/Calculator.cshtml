@@ -1,0 +1,17 @@
+@*
+    View for Calculator Action
+*@
+@{
+    Layout = null; // Use default layout or null if you prefer it to be standalone
+}
+
+<h2>Calculator Result</h2>
+
+@if (ViewBag.Op == "Unknown")
+{
+    <p>Invalid operation! Please use Add, Mul, Sub, or Div.</p>
+}
+else
+{
+    <p>Selected operation: @ViewBag.Op</p>
+}
