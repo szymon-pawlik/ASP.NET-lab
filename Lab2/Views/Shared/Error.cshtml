@@ -1,0 +1,13 @@
+﻿@model Lab2.Models.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Wystąpił błąd";
+}
+
+<h1 class="text-danger">Wystąpił błąd.</h1>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        Identyfikator żądania: <code>@Model.RequestId</code></p>
+}

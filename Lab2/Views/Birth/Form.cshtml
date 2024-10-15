@@ -1,0 +1,14 @@
+@using (Html.BeginForm("Result", "Birth", FormMethod.Post))
+{
+    <div class="mb-3">
+        <label class="form-label" for="name">Imię</label>
+        <input class="form-control" type="text" name="Name" id="name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="birthDate">Data urodzenia</label>
+        <input class="form-control" type="date" name="BirthDate" id="birthDate" />
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Wyślij</button>
+    </div>
+}
